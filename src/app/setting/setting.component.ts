@@ -22,7 +22,7 @@ export class SettingComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private db: AngularFirestore) {
     this.title = route.snapshot.data["title"];
-    this.groupItemCollection = this.db.collection('group-item');
+    this.groupItemCollection = this.db.collection('group-item', ref => ref.orderBy('createDate'));
     this.groupItem = this.groupItemCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data();
@@ -40,7 +40,8 @@ export class SettingComponent implements OnInit {
     let newName = this.groupForm.value.name;
     if (this.groupItemAction === 'add') {
       console.log('add group: ', this.groupForm.value.name);
-      this.groupItemCollection.add({ name: newName });
+      const timeStamp = new Date();
+      this.groupItemCollection.add({ name: newName, createDate: timeStamp });
     } else {
       console.log('update group: ', this.groupItemUpdateKey);
       this.groupItemCollection.doc(this.groupItemUpdateKey).update({ name: newName });
@@ -70,7 +71,7 @@ export class SettingComponent implements OnInit {
     this.groupItemAction = 'add';
   }
 
-  goToSettingItem(id: string){
+  goToSettingItem(id: string) {
     this.router.navigate(['/setting-item', { id: id }]);
   }
 }

@@ -15,9 +15,9 @@
             <input type="text" formControlName="{{i}}" class="form-control">
           </div>
         </div> -->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <button type="button" class="btn" (click)="addItemsForm()"><i class="fa fa-plus"></i></button>
-        </div>
+        </div> -->
         <button type="submit" class="btn btn-primary">Submit</button> &nbsp;
         <button type="button" class="btn" (click)="onCancel()">Cancel</button>
       </form>
@@ -43,7 +43,7 @@
               <th scope="row">{{i+1}}</th>
               <td>{{group.name}}<a *ngFor="let item of group.items"><br>- {{item.name}}</a></td>
               <td>
-                <a href="#" onclick="return false;" (click)="goToSettingItem(group.key)">Item setting</a> / 
+                <a href="#" onclick="return false;" (click)="goToSettingItem(group.id)">Item setting</a> / 
                 <a href="#" onclick="return false;" (click)="onEdit(group)">Edit</a> / 
                 <a href="#" onclick="return false;" (click)="onDelete(group)">Delete</a></td>
             </tr>
