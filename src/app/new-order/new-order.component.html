@@ -1,0 +1,19 @@
+<br />
+<div style="display: flex; flex-wrap: wrap">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="card">
+      <div class="card-header">
+        Header
+      </div>
+      <div class="card-body" formArrayName="groups" *ngFor="let group of form.get('groups').controls; let i = index">
+        {{group.get('name').value}}
+        <div *ngFor="let item of group.get('items').controls; let j = index">
+          <div class="custom-control custom-checkbox" (click)="toggleCheckbox(i,j)">
+            <input type="checkbox" class="custom-control-input">
+            <label class="custom-control-label">test {{item.value}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

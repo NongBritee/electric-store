@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Electric store</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+      <p>
+        Application Menu
+      </p>
+      <!-- <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a href="#">Home 1</a>
+          </li>
+        </ul>
+      </li> -->
+
+      <li>
+        <a href="/new-order">New Orders</a>
+      </li>
+      <li>
+        <a href="/orders">Orders</a>
+      </li>
+      <li>
+        <a href="/setting">Setting</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+  </nav>
+  <div id="content" style="background-color: #f0f2f4; flex-grow: 1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- <a class="navbar-brand" href="#">KittyQueen</a>
+      <span class="navbar-text">
+        <b>ร้าน ช.ทักษิณการไฟฟ้า92</b>
+      </span> -->
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link">LOGOUT</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

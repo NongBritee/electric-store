@@ -1,0 +1,55 @@
+<div>
+  <br />
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="groupName">Group name</label>
+          <input id="groupNameInput" type="text" formControlName="name" class="form-control" placeholder="Group 1">
+          <small id="groupNameHelp" class="form-text text-muted">Please don't use exist group name.</small>
+        </div>
+        <!-- <div formArrayName="items">
+          <div class="form-group" *ngFor="let item of items.controls; let i=index">
+            <button type="button" class="btn" (click)="deleteItemsForm(i)"><i class="fa fa-minus"></i></button>&nbsp;&nbsp;
+            <label for="itemName">Item {{i+1}}</label>
+            <input type="text" formControlName="{{i}}" class="form-control">
+          </div>
+        </div> -->
+        <div class="form-group">
+          <button type="button" class="btn" (click)="addItemsForm()"><i class="fa fa-plus"></i></button>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button> &nbsp;
+        <button type="button" class="btn" (click)="onCancel()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div>
+  <br />
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive-lg">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Group name</th>
+              <th>Edit/Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let group of groupItem | async; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{group.name}}<a *ngFor="let item of group.items"><br>- {{item.name}}</a></td>
+              <td>
+                <a href="#" onclick="return false;" (click)="goToSettingItem(group.key)">Item setting</a> / 
+                <a href="#" onclick="return false;" (click)="onEdit(group)">Edit</a> / 
+                <a href="#" onclick="return false;" (click)="onDelete(group)">Delete</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
